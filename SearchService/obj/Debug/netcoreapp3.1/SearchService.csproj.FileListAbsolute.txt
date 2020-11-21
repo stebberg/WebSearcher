@@ -1,0 +1,8 @@
+C:\Users\stbe050\source\repos\WebSearcher\SearchService\bin\Debug\netcoreapp3.1\SearchService.deps.json
+C:\Users\stbe050\source\repos\WebSearcher\SearchService\bin\Debug\netcoreapp3.1\SearchService.dll
+C:\Users\stbe050\source\repos\WebSearcher\SearchService\bin\Debug\netcoreapp3.1\SearchService.pdb
+C:\Users\stbe050\source\repos\WebSearcher\SearchService\obj\Debug\netcoreapp3.1\SearchService.AssemblyInfoInputs.cache
+C:\Users\stbe050\source\repos\WebSearcher\SearchService\obj\Debug\netcoreapp3.1\SearchService.AssemblyInfo.cs
+C:\Users\stbe050\source\repos\WebSearcher\SearchService\obj\Debug\netcoreapp3.1\SearchService.csproj.CoreCompileInputs.cache
+C:\Users\stbe050\source\repos\WebSearcher\SearchService\obj\Debug\netcoreapp3.1\SearchService.dll
+C:\Users\stbe050\source\repos\WebSearcher\SearchService\obj\Debug\netcoreapp3.1\SearchService.pdb

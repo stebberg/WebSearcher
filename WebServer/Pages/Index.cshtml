@@ -1,0 +1,47 @@
+﻿@page
+@model IndexModel
+
+<form method="post">
+
+    <input asp-for="@Model.Query" placeholder="Söktext" />
+    <br />
+    @foreach (var searchEngine in Model.AllSearchEngines)
+    {
+        var selected = Model.SearchEngines.Contains(searchEngine);
+        <input name="SearchEngines" type="checkbox" value="@searchEngine" @(selected ? "checked" : "") />@searchEngine
+    }
+    <br />
+    <button type="submit">Sök</button>
+
+    @{
+        var result = await Model.Result;
+    }
+
+
+    @if (result.Any())
+    {
+        <hr />
+        <table cellpadding="2">
+            <thead>
+                <tr>
+                    <th>Söktjänst</th>
+                    <th>Sökord</th>
+                    <th>Träffar</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var res in result)
+                {
+                    <tr>
+                        <td>@res.SearchEngine.ProviderName</td>
+                        <td>@res.QueryWord</td>
+                        <td align="right">@(res.HitCount.HasValue ? SearchService.FormattingHelper.NumAsString(res.HitCount.Value) : "Inget svar")</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        <strong>Totalt antal:</strong> @SearchService.FormattingHelper.NumAsString(result.Sum(x=>x.HitCount ?? 0))
+    }
+
+</form>
+
