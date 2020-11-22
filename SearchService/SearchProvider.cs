@@ -24,7 +24,7 @@ namespace SearchService
 
         public async Task<IEnumerable<Result>> DoSearch(IEnumerable<string> searchEngines, IEnumerable<string> queryTerms)
         {
-            List<(SearchEngineBase, string)> tasks = new List<(SearchEngineBase, string)>();
+            var tasks = new List<(SearchEngineBase, string)>();
             foreach (var strSearchEngine in searchEngines)
             {
                 foreach (var queryWord in queryTerms)

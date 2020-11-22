@@ -6,3 +6,12 @@ C:\Users\stbe050\source\repos\WebSearcher\SearchService\obj\Debug\netcoreapp3.1\
 C:\Users\stbe050\source\repos\WebSearcher\SearchService\obj\Debug\netcoreapp3.1\SearchService.csproj.CoreCompileInputs.cache
 C:\Users\stbe050\source\repos\WebSearcher\SearchService\obj\Debug\netcoreapp3.1\SearchService.dll
 C:\Users\stbe050\source\repos\WebSearcher\SearchService\obj\Debug\netcoreapp3.1\SearchService.pdb
+C:\temp\voyadoo\WebSearcher\SearchService\bin\Debug\netcoreapp3.1\SearchService.deps.json
+C:\temp\voyadoo\WebSearcher\SearchService\bin\Debug\netcoreapp3.1\SearchService.dll
+C:\temp\voyadoo\WebSearcher\SearchService\bin\Debug\netcoreapp3.1\SearchService.pdb
+C:\temp\voyadoo\WebSearcher\SearchService\obj\Debug\netcoreapp3.1\SearchService.csprojAssemblyReference.cache
+C:\temp\voyadoo\WebSearcher\SearchService\obj\Debug\netcoreapp3.1\SearchService.AssemblyInfoInputs.cache
+C:\temp\voyadoo\WebSearcher\SearchService\obj\Debug\netcoreapp3.1\SearchService.AssemblyInfo.cs
+C:\temp\voyadoo\WebSearcher\SearchService\obj\Debug\netcoreapp3.1\SearchService.csproj.CoreCompileInputs.cache
+C:\temp\voyadoo\WebSearcher\SearchService\obj\Debug\netcoreapp3.1\SearchService.dll
+C:\temp\voyadoo\WebSearcher\SearchService\obj\Debug\netcoreapp3.1\SearchService.pdb

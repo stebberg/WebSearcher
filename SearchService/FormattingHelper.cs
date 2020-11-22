@@ -14,7 +14,7 @@ namespace SearchService
         /// <returns>textual representation of numbers</returns>
         public static string NumAsString(long number)
         {
-            if (number < 0) throw new System.Exception("Can't handle negative numbers");
+            if (number < 0) throw new System.FormatException("Can't handle negative numbers");
             if (number > 1_000_000)
                 return $"{number / 1_000_000M:### ##0.0}M".Trim();
             if (number > 1_000)

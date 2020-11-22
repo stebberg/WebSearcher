@@ -28,14 +28,13 @@ namespace WebServer.Pages
             _searchEngineRepository.GetAllSearchEnginesByNames();
         
         public Task<IEnumerable<Result>> Result =>
-            GetResult();
+            GetResultFromSearch();
 
-        async Task<IEnumerable<SearchService.Result>> GetResult() =>
+        async Task<IEnumerable<Result>> GetResultFromSearch() =>
             await _searchProvider.DoSearch(SearchEngines, SplitQueryIntoWords(Query));
 
         string[] SplitQueryIntoWords(string query) =>
             (query ?? "").Split(' ', StringSplitOptions.RemoveEmptyEntries);
-
 
         public IActionResult OnGet()
         {
@@ -46,7 +45,6 @@ namespace WebServer.Pages
         {
             return RedirectToPage("/Index", new { Query, SearchEngines });
         }
-
 
     }
 }

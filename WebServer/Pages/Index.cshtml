@@ -1,29 +1,36 @@
 ﻿@page
 @model IndexModel
 
-<form method="post">
+<div style="text-align:center;">
 
-    <input asp-for="@Model.Query" placeholder="Söktext" />
-    <br />
-    @foreach (var searchEngine in Model.AllSearchEngines)
-    {
-        var selected = Model.SearchEngines.Contains(searchEngine);
-        <input name="SearchEngines" type="checkbox" value="@searchEngine" @(selected ? "checked" : "") />@searchEngine
-    }
-    <br />
-    <button type="submit">Sök</button>
+    <h1>WebSearcher</h1>
+
+    <form method="post">
+
+        <input asp-for="@Model.Query" placeholder="Söktext" />
+        <br />
+        @foreach (var searchEngine in Model.AllSearchEngines)
+        {
+            var selected = Model.SearchEngines.Contains(searchEngine);
+            <input name="SearchEngines" type="checkbox" id="@searchEngine" value="@searchEngine" @(selected ? "checked" : "") />
+            <label for="@searchEngine">@searchEngine</label>
+        }
+        <br /><br />
+        <button type="submit" style="width:80px;">Sök</button>
+
+    </form>
 
     @{
         var result = await Model.Result;
+        int row = 0;
     }
-
 
     @if (result.Any())
     {
         <hr />
-        <table cellpadding="2">
+        <table class="resultTable">
             <thead>
-                <tr>
+                <tr class="tdHead">
                     <th>Söktjänst</th>
                     <th>Sökord</th>
                     <th>Träffar</th>
@@ -32,7 +39,7 @@
             <tbody>
                 @foreach (var res in result)
                 {
-                    <tr>
+                    <tr class="@(++row % 2 == 0 ? "tdEven" : "tdOdd")">
                         <td>@res.SearchEngine.ProviderName</td>
                         <td>@res.QueryWord</td>
                         <td align="right">@(res.HitCount.HasValue ? SearchService.FormattingHelper.NumAsString(res.HitCount.Value) : "Inget svar")</td>
@@ -40,8 +47,7 @@
                 }
             </tbody>
         </table>
-        <strong>Totalt antal:</strong> @SearchService.FormattingHelper.NumAsString(result.Sum(x=>x.HitCount ?? 0))
+        <strong>Totalt antal:</strong> @SearchService.FormattingHelper.NumAsString(result.Sum(x => x.HitCount ?? 0))
     }
 
-</form>
-
+</div>

@@ -12,7 +12,7 @@ namespace SearchService
         const string userAgent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.66 Safari/537.36";
         public async Task<string> DownloadWebPage(string url)
         {
-            using (HttpClient client = new HttpClient())
+            using (var client = new HttpClient())
             {
                 client.DefaultRequestHeaders.UserAgent.ParseAdd(userAgent);
                 return await client.GetStringAsync(url);

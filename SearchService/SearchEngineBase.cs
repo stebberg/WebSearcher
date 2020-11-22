@@ -1,5 +1,4 @@
-﻿using System;
-using System.Text;
+﻿using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
@@ -8,7 +7,8 @@ namespace SearchService
 
     /// <summary>
     /// Abstract class to use when creating search engines
-    /// It's possible to override the GetNumberFromHitText-function if the search enginges result text needs special cleanup when retracting the hit-count number.
+    /// It's possible to override the "GetNumberFromHitText"-function if the search enginge's 
+    /// resulttext needs special cleanup when retracting the hit-count-number.
     /// </summary>
     public abstract class SearchEngineBase
     {
@@ -20,21 +20,18 @@ namespace SearchService
 
         public async Task Search(string query)
         {
-            Console.WriteLine($"{DateTime.Now} {ProviderName} starting download");
-            string url = GetUrl(query);
-            SearchHttpClient client = new SearchHttpClient();
-            string pageData = await client.DownloadWebPage(url);
-            Console.WriteLine($"{DateTime.Now} {ProviderName} done download");
+            var url = GetUrl(query);
+            var client = new SearchHttpClient();
+            var pageData = await client.DownloadWebPage(url);
 
             var match = new Regex(HitCountRegEx).Match(pageData);
-            if (!match.Success)
-                return;
-            Console.WriteLine($"{DateTime.Now} {ProviderName} done function");
-            Result = GetNumberFromHitText(match.Value);
+            if (match.Success)
+                Result = GetNumberFromHitText(match.Value);
         }
+
         public virtual long GetNumberFromHitText(string text)
         {
-            StringBuilder sb = new StringBuilder("0");
+            var sb = new StringBuilder("0");
             foreach (var c in text)
                 if (IsDigit(c))
                     sb.Append(c);

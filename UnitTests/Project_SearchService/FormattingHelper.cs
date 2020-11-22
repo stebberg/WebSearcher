@@ -59,7 +59,7 @@ namespace UnitTests.Project_SearchService
         [TestMethod]
         public void TestNumberFormatter_ShouldTrowError()
         {
-            var ex = Assert.ThrowsException<Exception>(() => SearchService.FormattingHelper.NumAsString(-1));
+            var ex = Assert.ThrowsException<FormatException>(() => SearchService.FormattingHelper.NumAsString(-1));
             Assert.AreEqual("Can't handle negative numbers", ex.Message);
         }
 
