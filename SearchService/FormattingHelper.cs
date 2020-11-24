@@ -5,7 +5,7 @@ namespace SearchService
     public class FormattingHelper
     {
         /// <summary>
-        /// Format a number as text eg:
+        /// Format a number as readable text eg:
         ///     100 > 100
         ///     1500 > 1,5k
         ///     1230000 > 1,2M
@@ -23,7 +23,7 @@ namespace SearchService
         }
         
         /// <summary>
-        /// URL encode a string to it can be used in an URL
+        /// URL encode a string so it can be used in an URL
         /// </summary>
         /// <param name="url"></param>
         /// <returns>encoding a string to URL</returns>

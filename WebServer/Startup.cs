@@ -20,6 +20,7 @@ namespace WebServer
             services.AddRazorPages();
             services.AddSingleton<SearchService.ISearchEngineRepository, SearchService.MockSearchEngineRepository>();
             services.AddSingleton<SearchService.ISearchProvider, SearchService.SearchProvider>();
+            services.AddSingleton<SearchService.ISearchHttpClient, SearchService.SearchHttpClient>();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

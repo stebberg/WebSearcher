@@ -6,9 +6,9 @@ namespace SearchService
 {
 
     /// <summary>
-    /// Abstract class to use when creating search engines
-    /// It's possible to override the "GetNumberFromHitText"-function if the search enginge's 
-    /// resulttext needs special cleanup when retracting the hit-count-number.
+    /// Abstract class to use when adding search engines.
+    /// It's possible to override the "GetNumberFromHitText"-function if the search engine's 
+    /// result needs special cleanup when retracting the hit-count.
     /// </summary>
     public abstract class SearchEngineBase
     {
@@ -18,15 +18,18 @@ namespace SearchService
 
         public long? Result { get; set; }
 
-        public async Task Search(string query)
+        public async Task Search(string queryWord)
         {
-            var url = GetUrl(query);
-            var client = new SearchHttpClient();
-            var pageData = await client.DownloadWebPage(url);
+            var url = GetUrl(queryWord);
 
-            var match = new Regex(HitCountRegEx).Match(pageData);
-            if (match.Success)
-                Result = GetNumberFromHitText(match.Value);
+            using (var client = new SearchHttpClient())
+            {
+                var pageData = await client.GetStringAsync(url);
+
+                var match = new Regex(HitCountRegEx).Match(pageData);
+                if (match.Success)
+                    Result = GetNumberFromHitText(match.Value);
+            }
         }
 
         public virtual long GetNumberFromHitText(string text)
@@ -39,7 +42,7 @@ namespace SearchService
         }
 
         bool IsDigit(char c) =>
-            c >= '0' && c <= '9'; // we do not want to allow: , . -
+            c >= '0' && c <= '9'; // we do not want to include: , . -
 
         protected string UrnEncode(string url) =>
             FormattingHelper.UrlEncode(url);

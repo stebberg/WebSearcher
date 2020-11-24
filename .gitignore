@@ -4,3 +4,9 @@
 
 /.vs
 /SearchService/obj
+/SearchService/bin
+/UnitTests/obj
+/UnitTests/bin
+/WebServer/obj
+/WebServer/bin
+/TestResults
